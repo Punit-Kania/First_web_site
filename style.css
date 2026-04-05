@@ -1,0 +1,119 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar link size */
+.navbar .nav-link {
+  font-size: 18px;
+  /* 16–20px safe range */
+  font-weight: 500;
+   
+}
+
+/* Navbar */
+.navbar {
+  padding: 0.8rem 1rem;
+ }
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  font-size: 1rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important;
+}
+
+/* Hero */
+.hero {
+  background: url('image/gym5.jpg') no-repeat center left;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  /* vertical center  */
+  color: white;
+}
+
+.hero-content {
+  max-width: 500px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px black;
+}
+
+.hero a {
+  margin-top: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+/* CARD (HOME PAGE)*/
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* fees PAGE */
+.plan-card {
+  transition: transform 0.3s;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+}
+
+/* REGISTER PAGE  */
+body {
+  background: #f7f7f7;
+}
+
+.register-container {
+  max-width: 450px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* 
+.success-msg,
+.error-msg {
+  display: none;
+  margin-top: 20px;
+} */
+
+/* LOGIN PAGE */
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.social-icon {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ff5722;   /* orange highlight */
+  transform: scale(1.2); /* thoda zoom effect */
+}

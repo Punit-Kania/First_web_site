@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width = device-width initial-scale = 1.0">
+  <title> Cricket Pro Academy - Register </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a href="#" class="navbar-brand font-weight-bold">Cricket Pro Academy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="home.html" class="nav-link"> Home </a></li>
+        <li class="nav-item"><a href="Login.html" class="nav-link"> Login </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div style="height:56px"></div>
+
+  <div class="register-container">
+    <h3 class="text-center mb-4">Register for Cricket Pro Academy</h3>
+    <form id="registerForm" novalidate>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" class="form-control" placeholder="Full Name" id="fullname" required>
+        <div id="fullname-error" class="text-danger small"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" placeholder="Email Address" id="email" required>
+        <div id="email-error" class="text-danger small"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date Of Birth</label>
+        <input type="date" class="form-control" id="dob" required>
+        <div id="dob-error" class="text-danger small"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" id="password" required>
+        <div id="password-error" class="text-danger small"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword" required>
+        <div id="confirm_pass-error" class="text-danger small"></div>
+      </div>
+
+      <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
+      <button type="submit" class="btn btn-success btn-block">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("fullname").value;
+      const email = document.getElementById("email").value;
+      const dob = document.getElementById("dob").value;
+      const pass = document.getElementById("password").value;
+      const conPass = document.getElementById("confirmPassword").value;
+
+      let isValid = true;
+      document.getElementById("fullname-error").textContent = "";
+      document.getElementById("email-error").textContent = "";
+      document.getElementById("dob-error").textContent = "";
+      document.getElementById("password-error").textContent = "";
+      document.getElementById("confirm_pass-error").textContent = "";
+
+      const nameRegex = /^[a-zA-Z ]{1,30}$/;
+      if (!nameRegex.test(name)) {
+        document.getElementById("fullname-error").textContent = "Name must be 1-30 letters.";
+        isValid = false;
+      }
+
+      const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z.-]+)\.([a-zA-Z]{2,})$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("email-error").textContent = "Invalid email address.";
+        isValid = false;
+      }
+
+      const passRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%&])[A-Za-z\d!@#$%&]{8,}$/;
+      if (!passRegex.test(pass)) {
+        document.getElementById("password-error").textContent = "Password must have 8+ chars, 1 uppercase, 1 number, 1 special char.";
+        isValid = false;
+      }
+
+      const today = new Date();
+      const bDate = new Date(dob);
+      const age = today.getFullYear() - bDate.getFullYear();
+      const month = today.getMonth() - bDate.getMonth();
+
+      if (age < 18 || (age === 18 && month < 0)) {
+        document.getElementById("dob-error").textContent = "You must be at least 18 years old.";
+        isValid = false;
+      }
+
+      if (pass !== conPass) {
+        document.getElementById("confirm_pass-error").textContent = "Passwords do not match.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Registration Successful! Welcome to Cricket Pro Academy.");
+      }
+    });
+  </script>
+</body>
+</html>

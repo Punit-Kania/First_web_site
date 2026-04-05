@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width = device-width initial-scale = 1.0">
+    <title> Cricket Pro Academy </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a href="#" class="navbar-brand font-weight-bold">Cricket Pro Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="home.html" class="nav-link"> Home </a></li>
+                <li class="nav-item"><a href="register.html" class="nav-link"> Register </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div style="height:56px"></div> <!-- navbar spacer -->
+
+    <div class="login-container">
+        <h3 class="text-center mb-4">Login to Cricket Pro Academy</h3>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Player Email</label>
+                <input type="email" class="form-control" id="email" required>
+                <div id="email-error" class="text-danger small"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Player Password</label>
+                <input type="password" class="form-control" id="password" required>
+                <div id="password-error" class="text-danger small"></div>
+            </div>
+
+            <p class="text-center mt-3">New to Cricket Pro Academy? <a href="register.html">Join For New</a></p>
+
+            <button type="submit" class="btn btn-success btn-block">Login</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            let isValid = true;
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+
+            const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z.-]+)\.([a-zA-Z]{2,})$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById("email-error").textContent = "Invalid email address.";
+                isValid = false;
+            }
+
+            const passRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!#@$%&])[A-Za-z\d!@#$%&]{8,}$/;
+            if (!passRegex.test(password)) {
+                document.getElementById("password-error").textContent =
+                    "Password must have 8+ chars, 1 uppercase, 1 number, 1 special char.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("🏏 Welcome back, Player! You are successfully logged in!");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
